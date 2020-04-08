@@ -1,0 +1,50 @@
+data_set = []
+for num in range(99):
+    y = (8 * num**7) + (4 * num**6) + (2 * num**5) + (3 * num**4) + (2 * num**3) + (1 * num**2) + (4 * num)
+    data_set.append(y)
+
+x = list(range(0, 99))
+
+def difference(x, coeffs, degree, data_set):
+    """This program is like the difference one above but hopefully better"""
+    list_of_arrays = []
+    
+    if coeffs == []:
+        
+        for num in range(10):
+            diff = 0
+            for points in x:
+                y = num * points**(degree)
+                diff += y - data_set[points]
+            list_of_arrays.append([diff, num])
+    
+    else:  
+        
+        for coeff in coeffs:
+            deg = degree - len(coeff) + 1
+            for num in range(10): 
+                diff = coeff[0]
+                for points in x:
+                    y = num * (points**deg)
+                    diff += y
+                list_of_arrays.append([diff] + coeff[1:] + [num])
+    
+    return list_of_arrays
+
+def Machine(x, degree, data_set):
+    
+    """this function puts it all together"""
+
+    list_of_arrays = []
+    for num in range(degree):
+        
+        list_of_arrays = difference(x, list_of_arrays, degree, data_set)
+        print('done')
+
+    for lists in list_of_arrays:
+        if lists[0] == 0:
+            return lists
+        
+    
+
+print(Machine(x, 7, data_set))

@@ -6,7 +6,7 @@ for num in range(99):
 x = list(range(0, 99))
 
 def difference(x, coeffs, degree, data_set):
-    """This program is like the difference one above but hopefully better"""
+    """This program does the calculations"""
     list_of_arrays = []
     
     if coeffs == []:
